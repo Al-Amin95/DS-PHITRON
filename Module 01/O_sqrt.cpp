@@ -17,7 +17,6 @@ int main()
     }
     cout << endl<< endl; // O(1)
 
-
     int m;                             // O(1)
     cin >> m;                          // O(1)
     cout << sqrt(m) << endl;           // O(1)
