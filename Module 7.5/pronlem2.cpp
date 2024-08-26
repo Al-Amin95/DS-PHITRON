@@ -41,75 +41,58 @@ int sizeCount(Node *head){
     return count;
 }
 
+void printRecursionReverse(Node *node){
+    if(node == NULL) {
+        return;
+    }
+    printRecursionReverse(node->next);
+    cout << node->val << " ";
+}
+
 int main() {
     cout << "\tOption" << endl;
     cout << "1. Input linked list from user" << endl;
     cout << "2. Print linked list" << endl;
-    cout << "3. Check their size" << endl;
+    cout << "3. Print linked list in reverse using recursion" << endl;
     cout << "4. Terminate" << endl;
 
-    Node *head1 = NULL;
-    Node *head2 = NULL;
-    Node *tail1 = NULL;
-    Node *tail2 = NULL;
+    Node *head = NULL;
+    Node *tail = NULL;
 
     while (true) {
         int op;
         cout << "Enter Option: ";
         cin >> op;
         if (op == 1) {
-            cout << "Enter linked list-1 values (-1 to stop): ";
+            cout << "Enter linked list values (-1 to stop): ";
             while (true) {
                 int val;
                 cin >> val;
                 if (val == -1) {
                     break;
                 } else {
-                    insertAtTail(head1, tail1, val);
+                    insertAtTail(head, tail, val);
                 }
             }
-            cout << "Linked List-1: ";
-            printLinkedList(head1);
-            cout << "Linked List-1 size: " << sizeCount(head1) << endl;
-
-            cout << "Enter linked list-2 values (-1 to stop): ";
-            while (true) {
-                int val;
-                cin >> val;
-                if (val == -1) {
-                    break;
-                } else {
-                    insertAtTail(head2, tail2, val);
-                }
-            }
-            cout << "Linked List-2: ";
-            printLinkedList(head2);
-            cout << "Linked List-2 size: " << sizeCount(head2) << endl;
-            cout<<endl<<endl;
+            cout << "Linked List: ";
+            printLinkedList(head);
+            cout << "Linked List size: " << sizeCount(head) << endl;
 
         } else if (op == 2) {
-            cout << "Linked List-1: ";
-            printLinkedList(head1);
-            cout << "Linked List-2: ";
-            printLinkedList(head2);
-            cout<<endl<<endl;
-
+            cout << "Linked List: ";
+            printLinkedList(head);
+            cout << endl;
         } else if (op == 3) {
-            int size1 = sizeCount(head1);
-            int size2 = sizeCount(head2);
-            if (size1 == size2) {
-                cout << "Both linked lists have the same size." << endl;
-            } else {
-                cout << "The linked lists have different sizes." << endl;
-            }
-            cout<<endl<<endl;
-
+            cout << "Linked List in Reverse: ";
+            printRecursionReverse(head);
+            cout << endl;
         } else if (op == 4) {
-            cout<<"Terminated"<<endl;
+            cout << "Terminated" << endl;
             break;
         } else {
             cout << "Invalid option, try again." << endl;
         }
     }
+
     return 0;
 }
